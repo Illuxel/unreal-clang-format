@@ -87,16 +87,30 @@ FixNamespaceComments: true
 SortIncludes: CaseSensitive
 IncludeBlocks: Regroup
 IncludeCategories:
-  - Regex: '.*\.generated\.h'
-    Priority: 100
-  - Regex: ".*(PCH).*"
-    Priority: -1
-  - Regex: '".*"'
+  # standart libs
+  - Regex: '\<.*\>'
     Priority: 1
-  - Regex: '^<.*\.(h)>'
+    CaseSensitive: true
+  # interfaces
+  - Regex: '".+Interface\.h"'
     Priority: 3
-  - Regex: "^<.*>"
+    CaseSensitive: true
+  # components
+  - Regex: '".+Component\.h"'
     Priority: 4
+    CaseSensitive: true
+  # blueprint libraries
+  - Regex: '".+Library\.h"'
+    Priority: 5
+    CaseSensitive: true
+  # generated files
+  - Regex: '".*\.generated\.h"'
+    Priority: 100
+    CaseSensitive: true
+  # other unreal libs
+  - Regex: '".+\.h"'
+    Priority: 2
+    CaseSensitive: true
 IndentAccessModifiers: false
 IndentCaseBlocks: true
 IndentCaseLabels: true
